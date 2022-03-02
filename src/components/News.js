@@ -33,6 +33,7 @@ const News=(props)=>{
       }
      setTimeout(()=>{
       setLoad(false);
+      window.scrollTo(0,0);
      },1000)
   }
 
@@ -49,18 +50,18 @@ const News=(props)=>{
   },[category,pageno])
     return (
         <>
-            {load?(<div className='container d-flex justify-content-center' style={{marginTop:"30vh"}}><img src={loading} /></div>):(
+            {load?(<div className='container d-flex justify-content-center' style={{marginTop:"30vh",marginBottom:"15vh"}}><img src={loading} /></div>):(
               <>
                 <div className="container d-flex justify-content-center flex-wrap bg-secondary my-3">
                 {
                   dispnews.map((e,i)=>(
-                  <NewsItem mode={mode} source={e.source.name} title={e.title} desc={e.description} src={e.urlToImage} link={e.url} />
+                  <NewsItem key={i} mode={mode} source={e.source.name} title={e.title} desc={e.description} src={e.urlToImage} link={e.url} />
                   ))
                 }
               </div>
               <div className="container d-flex justify-content-between">
-                <div><button className={pageno===1?"btn btn-primary disabled":"btn btn-primary"} onClick={handlePrevious}>Previous Page</button></div>
-                <div><button className={pageno===disptime?"btn btn-primary disabled":"btn btn-primary"} onClick={handleNext}>Next Page</button></div>
+                <div><button className={pageno===1?"btn btn-primary disabled":"btn btn-primary"} onClick={handlePrevious}>&larr; Previous Page</button></div>
+                <div><button className={pageno===disptime?"btn btn-primary disabled":"btn btn-primary"} onClick={handleNext}>Next Page &rarr;</button></div>
               </div>
               </>
             )}
