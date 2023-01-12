@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import News from './components/News';
+import NotFound from './components/NotFound';
 
 const App=()=>{
   const [mode,setMode]=useState(true);
@@ -22,13 +23,14 @@ const App=()=>{
      <BrowserRouter>
         <Navbar handleMode={handleMode} mode={mode} />
         <Routes>
-            <Route path="/" element={<News category="general" mode={mode} />} />
-            <Route path="/sports" element={<News category="sports" mode={mode} />} />
-            <Route path="/business" element={<News category="business" mode={mode} />} />
-            <Route path="/entertainment" element={<News category="entertainment" mode={mode} />} />
-            <Route path="/health" element={<News category="health" mode={mode} />} />
-            <Route path="/science" element={<News category="science" mode={mode} />} />
-            <Route path="/technology" element={<News category="technology" mode={mode} />} />
+            <Route path="/instant_news" element={<News category="general" mode={mode} />} />
+            <Route path="/instant_news/sports" element={<News category="sports" mode={mode} />} />
+            <Route path="/instant_news/business" element={<News category="business" mode={mode} />} />
+            <Route path="/instant_news/entertainment" element={<News category="entertainment" mode={mode} />} />
+            <Route path="/instant_news/health" element={<News category="health" mode={mode} />} />
+            <Route path="/instant_news/science" element={<News category="science" mode={mode} />} />
+            <Route path="/instant_news/technology" element={<News category="technology" mode={mode} />} />
+            <Route path="*" element={<NotFound/>} />
         </Routes>
         <Footer />
      </BrowserRouter>
